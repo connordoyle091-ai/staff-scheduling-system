@@ -13,7 +13,7 @@ def organize_shifts(shifts):
                         "saturday": [],
                         "sunday": []}
     for shift in shifts:
-        organized_shifts[shift.day.lower()].append({"start time": shift.start_time, "end_time": shift.end_time, "required workers": shift.required_workers})
+        organized_shifts[shift.day.lower()].append({"start time": shift.start_time, "end time": shift.end_time, "required workers": shift.required_workers})
     return organized_shifts
     
                         

@@ -1,11 +1,30 @@
 from employee import Employee, organize_employees
 from shift import Shift, organize_shifts
 
+# employee availability
+connor_availability = {
+    "monday": [(9, 17)],
+    "tuesday": [(13, 21)],
+    "wednesday": [],
+    "thursday": [(9, 17)],
+    "friday": [(9, 13)],
+    "saturday": [],
+    "sunday": []
+}
+alex_availability = {
+    "monday": [],
+    "tuesday": [(7, 14)],
+    "wednesday": [(8, 13)],
+    "thursday": [],
+    "friday": [(9, 13)],
+    "saturday": [],
+    "sunday": [(12, 18)]
+}
+# employee info
 employees_general_info = [
-    Employee("Connor", ["lifeguard"], 20),
-    Employee("Alex", ["lifeguard", "supervisor"], 15),
+    Employee("Connor", ["lifeguard"], 20, connor_availability),
+    Employee("Alex", ["lifeguard", "supervisor"], 15, alex_availability),
 ]
-
 shifts = [
     Shift("Monday", 9, 13, 2),
     Shift("Monday", 10, 13, 4)
