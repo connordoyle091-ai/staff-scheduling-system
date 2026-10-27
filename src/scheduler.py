@@ -7,7 +7,14 @@ def is_available(employee, shift):
         if shift.start_time >= start and shift.end_time <= end:
             return True
     return False
-
+# qualification check
+def matching_qualifications(employee, shift):
+    shift_qualifications = shift.required_qualifications
+    relevant_qualifications = []
+    for qual in employee.qualifications:
+        if qual in shift_qualifications:
+            relevant_qualifications.append(qual)
+    return relevant_qualifications
 
 # employee availability
 connor_availability = {
@@ -46,5 +53,6 @@ shifts = [
 employees_organized = organize_employees(employees_general_info)
 #print(employees_organized)
 shifts_organized = organize_shifts(shifts)
-print(shifts_organized)
-print(is_available(employees_general_info[0], shifts[0]))
+#print(shifts_organized)
+#print(is_available(employees_general_info[0], shifts[0]))
+print(matching_qualifications(employees_general_info[1], shifts[0]))
