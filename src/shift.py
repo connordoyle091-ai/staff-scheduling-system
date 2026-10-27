@@ -1,5 +1,5 @@
 class Shift:
-    def __init__(self, day, start_time, end_time, required_workers):
+    def __init__(self, day, start_time, end_time, required_workers,):
         self.day = day
         self.start_time = start_time
         self.end_time = end_time
