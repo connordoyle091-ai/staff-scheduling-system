@@ -1,5 +1,13 @@
 from employee import Employee, organize_employees
 from shift import Shift, organize_shifts
+# availability check
+def is_available(employee, shift):
+    day = shift.day.lower()
+    for start, end in employee.availability[day]:
+        if shift.start_time >= start and shift.end_time <= end:
+            return True
+    return False
+
 
 # employee availability
 connor_availability = {
@@ -31,6 +39,7 @@ shifts = [
 ]
 
 employees_organized = organize_employees(employees_general_info)
-print(employees_organized)
+#print(employees_organized)
 shifts_organized = organize_shifts(shifts)
-print(shifts_organized)
+#print(shifts_organized)
+print(is_available(employees_general_info[0], shifts[0]))
