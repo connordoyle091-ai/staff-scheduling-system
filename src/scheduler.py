@@ -8,6 +8,7 @@ employees_general_info = [
 
 shifts = [
     Shift("Monday", 9, 13, 2),
+    Shift("Monday", 10, 13, 4)
 ]
 
 employees_organized = organize_employees(employees_general_info)
