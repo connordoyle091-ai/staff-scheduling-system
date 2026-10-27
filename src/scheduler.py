@@ -15,7 +15,9 @@ def matching_qualifications(employee, shift):
         if qual in shift_qualifications:
             relevant_qualifications.append(qual)
     return relevant_qualifications
-
+# shift qualification check
+def can_work_shift(employee, shift):
+    return matching_qualifications(employee, shift) != [] and is_available(employee, shift)
 # employee availability
 connor_availability = {
     "monday": [(9, 17)],
@@ -37,8 +39,8 @@ alex_availability = {
 }
 # employee info
 employees_general_info = [
-    Employee("Connor", ["lifeguard"], 20, connor_availability),
-    Employee("Alex", ["lifeguard", "supervisor"], 15, alex_availability),
+    Employee("Connor", ["lifeguard"], 20, connor_availability, []),
+    Employee("Alex", ["lifeguard", "supervisor"], 15, alex_availability, []),
 ]
 shifts = [
     Shift("Monday", 9, 13, 3, {

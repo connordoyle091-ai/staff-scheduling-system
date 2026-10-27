@@ -5,6 +5,8 @@ class Shift:
         self.end_time = end_time
         self.required_workers = required_workers
         self.required_qualifications = required_qualifications
+    def duration(self):
+        return self.end_time - self.start_time
 def organize_shifts(shifts):
     organized_shifts = {"monday": [],
                         "tuesday": [],
