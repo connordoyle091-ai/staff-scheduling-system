@@ -34,8 +34,13 @@ employees_general_info = [
     Employee("Alex", ["lifeguard", "supervisor"], 15, alex_availability),
 ]
 shifts = [
-    Shift("Monday", 9, 13, 3, ["lifeguard", "suppervisor", "lifeguard"]),
-    Shift("Monday", 10, 13, 4, ["lifeguard", "suppervisor", "suppervisor", "lifeguard"])
+    Shift("Monday", 9, 13, 3, {
+    "lifeguard": 2,
+    "supervisor": 1
+}),
+    Shift("Monday", 10, 13, 4, {"lifeguard": 2,
+        "supervisor": 2
+    })
 ]
 
 employees_organized = organize_employees(employees_general_info)
