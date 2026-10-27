@@ -15,9 +15,13 @@ def matching_qualifications(employee, shift):
         if qual in shift_qualifications:
             relevant_qualifications.append(qual)
     return relevant_qualifications
+# hours worked
+def within_max_hours(employee, shift):
+    return employee.hours_worked() + shift.duration() <= employee.max_hours
 # shift qualification check
 def can_work_shift(employee, shift):
-    return matching_qualifications(employee, shift) != [] and is_available(employee, shift)
+    return matching_qualifications(employee, shift) != [] and is_available(employee, shift) and within_max_hours(employee, shift)
+
 # employee availability
 connor_availability = {
     "monday": [(9, 17)],

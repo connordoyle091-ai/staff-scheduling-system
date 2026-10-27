@@ -8,7 +8,7 @@ class Employee:
     def hours_worked(self):
         total = 0
         for shift in self.assigned_shifts:
-            total += shift.duration
+            total += shift.duration()
         return total
 def organize_employees(employee_info):
     employees_organized = {}
