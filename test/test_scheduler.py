@@ -17,7 +17,7 @@ def test_shift_duration():
         "Monday",
         9,
         13,
-        2,
+        1,
         {"lifeguard": 1}
     )
 
@@ -29,7 +29,7 @@ def test_invalid_shift_day():
             "Funday",
             9,
             13,
-            2,
+            1,
             {"lifeguard": 1}
         )
 
@@ -40,7 +40,7 @@ def test_invalid_shift_time():
             "Monday",
             13,
             9,
-            2,
+            1,
             {"lifeguard": 1}
         )
 
@@ -67,7 +67,7 @@ def test_employee_is_available():
         "Monday",
         10,
         14,
-        2,
+        1,
         {"lifeguard": 1}
     )
 
@@ -89,7 +89,7 @@ def test_start_and_end_time_cannot_be_equal():
             "Monday",
             13,
             13,
-            2,
+            1,
             {"lifeguard": 1}
         )
 
@@ -460,3 +460,14 @@ def test_invalid_shift_is_not_assigned():
     assert result is False
     assert shift not in employee.assigned_shifts
     assert employee.hours_worked() == 0
+def test_qualification_count_must_equal_required_workers():
+    with pytest.raises(ValueError):
+        Shift(
+            "Monday",
+            9,
+            13,
+            3,
+            {
+                "lifeguard": 2
+            }
+        )
