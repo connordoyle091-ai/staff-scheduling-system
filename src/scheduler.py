@@ -18,9 +18,18 @@ def matching_qualifications(employee, shift):
 # hours worked
 def within_max_hours(employee, shift):
     return employee.hours_worked() + shift.duration() <= employee.max_hours
+# shift overlap
+def has_shift_conflict(employee, new_shift):
+    for assigned_shift in employee.assigned_shifts:
+        if assigned_shift.day.lower() != new_shift.day.lower():
+            continue
+        if new_shift.start_time < assigned_shift.end_time and new_shift.end_time > assigned_shift.start_time:
+            return True
+    return False
 # shift qualification check
 def can_work_shift(employee, shift):
-    return matching_qualifications(employee, shift) != [] and is_available(employee, shift) and within_max_hours(employee, shift)
+    return matching_qualifications(employee, shift) != [] and is_available(employee, shift) and within_max_hours(employee, shift) and not has_shift_conflict(employee, shift)
+
 
 # employee availability
 connor_availability = {
@@ -57,9 +66,10 @@ shifts = [
 ]
 employees_general_info[0].assigned_shifts.append(shifts[0])
 employees_organized = organize_employees(employees_general_info)
-print(employees_organized)
+#print(employees_organized)
 shifts_organized = organize_shifts(shifts)
 #print(shifts_organized)
 #print(is_available(employees_general_info[0], shifts[0]))
-print(matching_qualifications(employees_general_info[1], shifts[0]))
-print(employees_general_info[0].hours_worked())
+#print(matching_qualifications(employees_general_info[1], shifts[0]))
+#print(employees_general_info[0].hours_worked())
+print(has_shift_conflict(employees_general_info[1], shifts[0]))
