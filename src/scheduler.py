@@ -1,5 +1,5 @@
-from employee import Employee, organize_employees
-from shift import Shift, organize_shifts
+from .employee import Employee, organize_employees
+from .shift import Shift, organize_shifts
 # availability check
 def is_available(employee, shift):
     day = shift.day.lower()
@@ -31,46 +31,8 @@ def can_work_shift(employee, shift):
     return matching_qualifications(employee, shift) != [] and is_available(employee, shift) and within_max_hours(employee, shift) and not has_shift_conflict(employee, shift)
 
 # assign shifts
-def assing_shift(employee, shift):
+def assign_shift(employee, shift):
     if can_work_shift(employee, shift):
-        employee.assigned_shifts.append((shift.start_time, shift.end_time))
+        employee.assigned_shifts.append(shift)
         return True
     return False
-
-
-
-
-if __name__ == "__main__":
-    connor_availability = {
-    "monday": [(9, 17)],
-    "tuesday": [(13, 21)],
-    "wednesday": [],
-    "thursday": [(9, 17)],
-    "friday": [(9, 13)],
-    "saturday": [],
-    "sunday": []
-}
-    alex_availability = {
-    "monday": [],
-    "tuesday": [(7, 14)],
-    "wednesday": [(8, 13)],
-    "thursday": [],
-    "friday": [(9, 13)],
-    "saturday": [],
-    "sunday": [(12, 18)]
-}
-    employees_general_info = [
-    Employee("Connor", ["lifeguard"], 20, connor_availability, []),
-    Employee("Alex", ["lifeguard", "supervisor"], 15, alex_availability, []),
-    ]
-    shifts = [
-        Shift("Monday", 9, 13, 3, {
-        "lifeguard": 2,
-        "supervisor": 1
-    }),
-        Shift("Monday", 10, 13, 4, {"lifeguard": 2,
-            "supervisor": 2
-        })
-    ]
-    assing_shift(employees_general_info[0], shifts[0])
-    print(employees_general_info[0].assigned_shifts)
