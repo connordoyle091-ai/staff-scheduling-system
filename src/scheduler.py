@@ -1,5 +1,5 @@
-from employee import Employee, organize_employees
-from shift import Shift, organize_shifts
+from .employee import Employee, organize_employees
+from .shift import Shift, organize_shifts
 # availability check
 def is_available(employee, shift):
     day = shift.day.lower()
@@ -64,12 +64,18 @@ shifts = [
         "supervisor": 2
     })
 ]
-employees_general_info[0].assigned_shifts.append(shifts[0])
-employees_organized = organize_employees(employees_general_info)
-#print(employees_organized)
-shifts_organized = organize_shifts(shifts)
-#print(shifts_organized)
-#print(is_available(employees_general_info[0], shifts[0]))
-#print(matching_qualifications(employees_general_info[1], shifts[0]))
-#print(employees_general_info[0].hours_worked())
-print(has_shift_conflict(employees_general_info[1], shifts[0]))
+
+if __name__ == "__main__":
+    employees_general_info = [
+    Employee("Connor", ["lifeguard"], 20, connor_availability, []),
+    Employee("Alex", ["lifeguard", "supervisor"], 15, alex_availability, []),
+    ]
+    shifts = [
+        Shift("Monday", 9, 13, 3, {
+        "lifeguard": 2,
+        "supervisor": 1
+    }),
+        Shift("Monday", 10, 13, 4, {"lifeguard": 2,
+            "supervisor": 2
+        })
+    ]
