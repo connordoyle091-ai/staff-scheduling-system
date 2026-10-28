@@ -55,10 +55,11 @@ shifts = [
         "supervisor": 2
     })
 ]
-
+employees_general_info[0].assigned_shifts.append(shifts[0])
 employees_organized = organize_employees(employees_general_info)
-#print(employees_organized)
+print(employees_organized)
 shifts_organized = organize_shifts(shifts)
 #print(shifts_organized)
 #print(is_available(employees_general_info[0], shifts[0]))
 print(matching_qualifications(employees_general_info[1], shifts[0]))
+print(employees_general_info[0].hours_worked())

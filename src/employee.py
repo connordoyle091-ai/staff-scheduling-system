@@ -16,5 +16,13 @@ def organize_employees(employee_info):
         employees_organized[f"Employee {i + 1}"] = {"name": employee_instance.name,
                                                 "qualifications": employee_instance.qualifications,
                                                 "max hours": employee_instance.max_hours,
-                                                "availability": employee_instance.availability}
+                                                "availability": employee_instance.availability,
+                                                "assigned shifts": [
+    {
+        "day": shift.day,
+        "start_time": shift.start_time,
+        "end_time": shift.end_time
+    }
+    for shift in employee_instance.assigned_shifts
+]}
     return employees_organized
