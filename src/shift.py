@@ -1,5 +1,28 @@
 class Shift:
-    def __init__(self, day, start_time, end_time, required_workers, required_qualifications):
+    valid_days = {
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+    }
+
+    def __init__(
+        self,
+        day,
+        start_time,
+        end_time,
+        required_workers,
+        required_qualifications
+    ):
+        if day.lower() not in self.valid_days:
+            raise ValueError("Invalid shift day")
+
+        if end_time <= start_time:
+            raise ValueError("Shift end time must be after start time")
+
         self.day = day
         self.start_time = start_time
         self.end_time = end_time
