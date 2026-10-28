@@ -22,6 +22,8 @@ class Shift:
 
         if end_time <= start_time:
             raise ValueError("Shift end time must be after start time")
+        if sum(required_qualifications.values()) != required_workers:
+            raise ValueError("Required number of qualifications must be equal to the number of workers")
 
         self.day = day
         self.start_time = start_time
