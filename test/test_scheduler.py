@@ -460,6 +460,7 @@ def test_invalid_shift_is_not_assigned():
     assert result is False
     assert shift not in employee.assigned_shifts
     assert employee.hours_worked() == 0
+    
 def test_qualification_count_must_equal_required_workers():
     with pytest.raises(ValueError):
         Shift(
